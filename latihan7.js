@@ -34,7 +34,10 @@ console.log(s);
 var m = "";
 for (var i = 0; i < 5; i++) {
   for (var j = 5; j > i; j--) {
-    m += "@";
+    m += "-";
+  }
+  for (var j = 0; j <= i; j++) {
+    m += "*";
   }
   m += "\n";
 }
