@@ -24,4 +24,3 @@ var naik = function (namaPenumpang) {
     }
   }
 };
-
