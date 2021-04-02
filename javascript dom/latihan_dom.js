@@ -64,3 +64,16 @@ sBiru.addEventListener("input", function () {
   kotak.innerHTML = b;
   document.body.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
 });
+
+document.body.addEventListener("mousemove", function (event) {
+  // posisi mouse
+  //   console.log("x = " + event.clientX);
+  //   console.log("y = " + event.clientY);
+  // ukuran browser
+  //   console.log(window.innerWidth);
+  //   console.log(window.innerHeight);
+  const xPos = Math.round((event.clientX / window.innerWidth) * 255);
+  const yPos = Math.round((event.clientY / window.innerHeight) * 255);
+  //   console.log(yPos);
+  document.body.style.backgroundColor = "rgb(" + xPos + ", " + yPos + ", " + xPos + ")";
+});
