@@ -87,27 +87,52 @@
 // let Fahad = Mahasiswa("Fahad", 20);
 
 // 5. Prototype
-function Mahasiswa(nama, energi) {
-  // secara default constructor sudah punya parent bernama prototype
-  // let this = Object.create(Mahasiswa.prototype);
-  this.nama = nama;
-  this.energi = energi;
-  //   return this;
+// function Mahasiswa(nama, energi) {
+//   // secara default constructor sudah punya parent bernama prototype
+//   // let this = Object.create(Mahasiswa.prototype);
+//   this.nama = nama;
+//   this.energi = energi;
+//   //   return this;
+// }
+// Mahasiswa.prototype.makan = function (porsi) {
+//   this.energi += porsi;
+//   console.log("Hai " + this.nama + " energi anda bertambah " + porsi);
+//   console.log("Jumlah energi : " + this.energi);
+// };
+// Mahasiswa.prototype.main = function (jam) {
+//   this.energi -= jam;
+//   console.log("Hai " + this.nama + " energi anda berkurang " + jam);
+//   console.log("Jumlah energi : " + this.energi);
+// };
+// Mahasiswa.prototype.tidur = function (jam) {
+//   this.energi += jam * 2;
+//   console.log("Hai " + this.nama + " energi anda bertambah " + jam);
+//   console.log("Jumlah energi : " + this.energi);
+// };
+
+// let Fahad = new Mahasiswa("Fahad", 10);
+
+// versi Class
+class Mahasiswa {
+  constructor(nama, energi) {
+    this.nama = nama;
+    this.energi = energi;
+  }
+  makan(porsi) {
+    this.energi += porsi;
+    console.log("Hai " + this.nama + " energi anda bertambah " + porsi);
+    console.log("Jumlah energi : " + this.energi);
+  }
+  main(jam) {
+    this.energi -= jam;
+    console.log("Hai " + this.nama + " energi anda berkurang " + jam);
+    console.log("Jumlah energi : " + this.energi);
+  }
+  tidur(jam) {
+    this.energi += jam * 2;
+    console.log("Hai " + this.nama + " energi anda bertambah " + jam);
+    console.log("Jumlah energi : " + this.energi);
+  }
 }
-Mahasiswa.prototype.makan = function (porsi) {
-  this.energi += porsi;
-  console.log("Hai " + this.nama + " energi anda bertambah " + porsi);
-  console.log("Jumlah energi : " + this.energi);
-};
-Mahasiswa.prototype.main = function (jam) {
-  this.energi -= jam;
-  console.log("Hai " + this.nama + " energi anda berkurang " + jam);
-  console.log("Jumlah energi : " + this.energi);
-};
-Mahasiswa.prototype.tidur = function (jam) {
-  this.energi += jam * 2;
-  console.log("Hai " + this.nama + " energi anda bertambah " + jam);
-  console.log("Jumlah energi : " + this.energi);
-};
 
 let Fahad = new Mahasiswa("Fahad", 10);
