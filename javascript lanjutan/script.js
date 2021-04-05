@@ -99,5 +99,15 @@ Mahasiswa.prototype.makan = function (porsi) {
   console.log("Hai " + this.nama + " energi anda bertambah " + porsi);
   console.log("Jumlah energi : " + this.energi);
 };
+Mahasiswa.prototype.main = function (jam) {
+  this.energi -= jam;
+  console.log("Hai " + this.nama + " energi anda berkurang " + jam);
+  console.log("Jumlah energi : " + this.energi);
+};
+Mahasiswa.prototype.tidur = function (jam) {
+  this.energi += jam *2;
+  console.log("Hai " + this.nama + " energi anda bertambah " + jam);
+  console.log("Jumlah energi : " + this.energi);
+};
 
 let Fahad = new Mahasiswa("Fahad", 10);
