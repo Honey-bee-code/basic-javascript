@@ -105,7 +105,7 @@ Mahasiswa.prototype.main = function (jam) {
   console.log("Jumlah energi : " + this.energi);
 };
 Mahasiswa.prototype.tidur = function (jam) {
-  this.energi += jam *2;
+  this.energi += jam * 2;
   console.log("Hai " + this.nama + " energi anda bertambah " + jam);
   console.log("Jumlah energi : " + this.energi);
 };
