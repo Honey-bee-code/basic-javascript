@@ -63,7 +63,7 @@ function cetakMatkul(matkul) {
     <ol>
         ${matkul
           .map(function (mk) {
-            return `<li class="">${mk}</li>`;
+            return `<li>${mk}</li>`;
           })
           .join("")}
         <hr>
