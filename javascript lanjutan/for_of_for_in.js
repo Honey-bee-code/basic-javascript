@@ -1,4 +1,4 @@
-const mhs = ["Imam", "Yusron", "Fahad"];
+// const mhs = ["Imam", "Yusron", "Fahad"];
 
 // menggunakan for
 // for (let i = 0; i < mhs.length; i++) {
@@ -34,13 +34,23 @@ const mhs = ["Imam", "Yusron", "Fahad"];
 // }
 
 // Arguments
-function jumlahAngka() {
-  // reduce tidak bisa digunakan pada argument
-  //   return arguments.reduce((a, i) => a + i);
-  let jumlah = 0;
-  for (a of arguments) {
-    jumlah += a;
-  }
-  return jumlah;
+// function jumlahAngka() {
+//   // reduce tidak bisa digunakan pada argument
+//   //   return arguments.reduce((a, i) => a + i);
+//   let jumlah = 0;
+//   for (a of arguments) {
+//     jumlah += a;
+//   }
+//   return jumlah;
+// }
+// console.log(jumlahAngka(1, 2, 3, 4, 5));
+
+const mhs = {
+  nama: "Khairul Imam",
+  umur: 23,
+  menikah: false,
+};
+
+for (m in mhs) {
+  console.log(m + ": " + mhs[m]);
 }
-console.log(jumlahAngka(1, 2, 3, 4, 5));
