@@ -39,14 +39,14 @@
 // const { nama: n, umur: u, email: e = 'default@email.com'} = mhs;
 
 // Mengambil field pada object
-const mhs = {
-  id: 123,
-  nama: "Khairul Imam",
-  umur: 28,
-};
+// const mhs = {
+//   id: 123,
+//   nama: "Khairul Imam",
+//   umur: 28,
+// };
 // function getId(object) {
 //   return object.id;
 // }
-function getId({id}) {
-    return id;
-}
+// function getId({id}) {
+//     return id;
+// }
