@@ -50,7 +50,7 @@ xhr.onreadystatechange = function () {
               };
             }
           } else {
-            console.log(xhrDetail.response);
+            console.log(xhrDeta.response);
           }
           xhrDetail.open("get", "http://www.omdbapi.com/?apikey=a1e37a18&i=" + id);
           xhrDetail.send();
