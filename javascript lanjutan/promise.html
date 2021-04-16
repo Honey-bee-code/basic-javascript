@@ -8,13 +8,17 @@
   </head>
   <body>
     <div class="container">
-      <h1>Movie Database</h1>
+      <h1>Movie Databases</h1>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Movie title..." id="input-search">
+        <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
+      </div>
       <div class="row movies"></div>
     </div>
 
     <!-- Modal -->
     <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="movieModalLabel">Movie Details</h5>
