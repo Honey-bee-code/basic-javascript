@@ -34,32 +34,6 @@ inputSearch.addEventListener("keyup", function () {
   }
 });
 
-function movieDatabasesFetch() {
-  fetch("http://www.omdbapi.com/?apikey=a1e37a18&s=" + inputSearch.value)
-    .then((response) => response.json())
-    .then((response) => {
-      const movies = response.Search;
-      let hasil = "";
-      movies.forEach((movie) => {
-        hasil += showHasil(movie);
-        document.querySelector(".movies").innerHTML = hasil;
-      });
-      const detailBtn = document.querySelectorAll(".modal-detail");
-      detailBtn.forEach((btn) => {
-        btn.addEventListener("click", function () {
-          const id = btn.dataset.id;
-          fetch("http://www.omdbapi.com/?apikey=a1e37a18&i=" + id)
-            .then((response) => response.json())
-            .then((response) => {
-              let detail = "";
-              detail += showDetail(response);
-              document.querySelector(".movie-modal").innerHTML = detail;
-            });
-        });
-      });
-    });
-}
-
 // function movieDatabases() {
 //   const xhr = new XMLHttpRequest();
 //   xhr.onreadystatechange = function () {
@@ -104,6 +78,33 @@ function movieDatabasesFetch() {
 //   xhr.open("get", "http://www.omdbapi.com/?apikey=a1e37a18&s=" + inputSearch.value);
 //   xhr.send();
 // }
+
+function movieDatabasesFetch() {
+  fetch("http://www.omdbapi.com/?apikey=a1e37a18&s=" + inputSearch.value)
+    .then((response) => response.json())
+    .then((response) => {
+      const movies = response.Search;
+      let hasil = "";
+      movies.forEach((movie) => {
+        hasil += showHasil(movie);
+        document.querySelector(".movies").innerHTML = hasil;
+      });
+      const detailBtn = document.querySelectorAll(".modal-detail");
+      detailBtn.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const id = btn.dataset.id;
+          fetch("http://www.omdbapi.com/?apikey=a1e37a18&i=" + id)
+            .then((response) => response.json())
+            .then((response) => {
+              let detail = "";
+              detail += showDetail(response);
+              document.querySelector(".movie-modal").innerHTML = detail;
+            });
+        });
+      });
+    });
+}
+
 
 function showHasil(m) {
   return `
