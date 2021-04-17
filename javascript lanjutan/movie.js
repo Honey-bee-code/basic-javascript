@@ -13,7 +13,6 @@
 //         url: "http://www.omdbapi.com/?apikey=a1e37a18&i=" + $(this).data("id"),
 //         success: (d) => {
 //           let detail = "";
-//           console.log(d);
 //           detail += showDetail();
 //           $(".movie-modal").html(detail);
 //         },
@@ -105,13 +104,12 @@ function movieDatabasesFetch() {
     });
 }
 
-
 function showHasil(m) {
   return `
-    <div class="col-sm-3" >
+    <div class="col-sm-3 mb-1" >
         <div class="card" >
+        <img src="${m.Poster}" width="100%">
         <div class="card-body">
-            <img src="${m.Poster}" width="100%">
             <h5 class="card-title">${m.Title}</h5>
             <p>${m.Year}</p>
             <button type="button" class="btn btn-primary modal-detail" data-bs-toggle="modal" data-bs-target="#movieModal" data-id="${m.imdbID}">
