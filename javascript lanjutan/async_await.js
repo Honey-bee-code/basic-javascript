@@ -7,14 +7,14 @@
 // coba.then(() => console.log(coba));
 
 function cobaPromise() {
-  return new Promise((resolve, reject) => {
-    const waktu = 5000;
+  return new Promise((berhasil, gagal) => {
+    const waktu = 4000;
     if (waktu < 5000) {
       setTimeout(() => {
-        resolve("selesai");
+        berhasil("selesai");
       }, waktu);
     } else {
-      reject("kelamaan");
+      gagal("kelamaan");
     }
   });
 }
