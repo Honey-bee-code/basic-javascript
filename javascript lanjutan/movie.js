@@ -3,16 +3,43 @@ const inputSearch = document.getElementById("input-search");
 const buttonSearch = document.getElementById("button-search");
 
 buttonSearch.addEventListener("click", async function () {
-  const movies = await movieDatabasesFetch(inputSearch.value);
-  updateUI(movies);
+  try {
+    const movies = await movieDatabasesFetch(inputSearch.value);
+    updateUI(movies);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 inputSearch.addEventListener("keyup", async function () {
-  if (event.keyCode === 13) {
-    const movies = await movieDatabasesFetch(inputSearch.value);
-    updateUI(movies);
+  try {
+    if (event.keyCode === 13) {
+      const movies = await movieDatabasesFetch(inputSearch.value);
+      updateUI(movies);
+    }
+  } catch (err) {
+    hasil = err;
+    document.querySelector(".movies").innerHTML = hasil;
   }
 });
+
+function movieDatabasesFetch(keyword) {
+  return fetch("http://www.omdbapi.com/?apikey=a1e37a18&s=" + keyword)
+    .then((response) => {
+      // event handler at fetch process
+      if (response.ok == false) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((response) => {
+      // event handler at UI update
+      if (response.Response === "False") {
+        throw new Error(response.Error);
+      }
+      return response.Search;
+    });
+}
 
 // event binding for detail button
 document.addEventListener("click", async function (e) {
@@ -33,12 +60,6 @@ function getMovieDetail(idMovie) {
   return fetch("http://www.omdbapi.com/?apikey=a1e37a18&i=" + idMovie)
     .then((response) => response.json())
     .then((response) => response);
-}
-
-function movieDatabasesFetch(keyword) {
-  return fetch("http://www.omdbapi.com/?apikey=a1e37a18&s=" + keyword)
-    .then((response) => response.json())
-    .then((response) => response.Search);
 }
 
 function updateUI(movies) {
@@ -81,71 +102,3 @@ function showDetail(d) {
         </div>
     </div>`;
 }
-
-// $.ajax({
-//   url: "http://www.omdbapi.com/?apikey=a1e37a18&s=avengers",
-//   success: (m) => {
-//     const movies = m.Search;
-//     let hasil = "";
-//     movies.forEach((movie) => {
-//       hasil += showHasil(movie);
-//       $(".movies").html(hasil);
-//     });
-//     $(".modal-detail").on("click", function () {
-//       // console.log($(this).data('id'))
-//       $.ajax({
-//         url: "http://www.omdbapi.com/?apikey=a1e37a18&i=" + $(this).data("id"),
-//         success: (d) => {
-//           let detail = "";
-//           detail += showDetail();
-//           $(".movie-modal").html(detail);
-//         },
-//       });
-//     });
-//   },
-// });
-
-// function movieDatabases() {
-//   const xhr = new XMLHttpRequest();
-//   xhr.onreadystatechange = function () {
-//     if (xhr.status === 200) {
-//       if (xhr.readyState === 4) {
-//         const result = xhr.response;
-//         const movies = JSON.parse(result).Search;
-//         // console.log(movies);
-//         let hasil = "";
-//         movies.forEach((movie) => {
-//           hasil += showHasil(movie);
-//           document.querySelector(".movies").innerHTML = hasil;
-//         });
-//         const detailBtn = document.querySelectorAll(".modal-detail");
-//         detailBtn.forEach(function (btn) {
-//           btn.addEventListener("click", function () {
-//             const id = btn.dataset.id;
-//             // console.log(id);
-
-//             xhr.onreadystatechange = function () {
-//               if (xhr.status === 200) {
-//                 if (xhr.readyState === 4) {
-//                   let detail = "";
-//                   //   console.log(xhr.response);
-//                   const modalDetail = JSON.parse(xhr.response);
-//                   detail += showDetail(modalDetail);
-//                   document.querySelector(".movie-modal").innerHTML = detail;
-//                 }
-//               } else {
-//                 console.log(xhr.response);
-//               }
-//             };
-//             xhr.open("get", "http://www.omdbapi.com/?apikey=a1e37a18&i=" + id);
-//             xhr.send();
-//           });
-//         });
-//       }
-//     } else {
-//       console.log(xhr.response);
-//     }
-//   };
-//   xhr.open("get", "http://www.omdbapi.com/?apikey=a1e37a18&s=" + inputSearch.value);
-//   xhr.send();
-// }
