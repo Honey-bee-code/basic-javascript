@@ -7,7 +7,7 @@ buttonSearch.addEventListener("click", async function () {
     const movies = await movieDatabasesFetch(inputSearch.value);
     updateUI(movies);
   } catch (err) {
-    hasil = err;
+    hasil = `<div class="alert alert-info" role="alert">${err}</div>`;
     document.querySelector(".movies").innerHTML = hasil;  }
 });
 
